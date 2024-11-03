@@ -1,0 +1,2 @@
+# SicenceT
+Practice Django
