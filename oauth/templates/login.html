@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .login-container {
+        background-color: #fff;
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .google-login-btn img {
+        width: 200px;
+        border-radius: 3px;
+        transition: opacity 0.3s;
+      }
+
+      .google-login-btn:hover img {
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login-container">
+      <h2>Login</h2>
+      <a
+        href="https://accounts.google.com/o/oauth2/v2/auth?scope=profile%20email&client_id=551833316119-d9um734r8b9t00e2h75kadullt8tm2lp.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fapi%2Fuser%2Fgoogle%2Fcallback%2F&response_type=code"
+        class="google-login-btn"
+      >
+        <img
+          src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png"
+          alt="Google Login"
+        />
+      </a>
+    </div>
+  </body>
+</html>

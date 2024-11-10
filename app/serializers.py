@@ -1,14 +1,12 @@
-from .models.user import User
-from rest_framework import serializers  
+from dj_rest_auth.registration.serializers import RegisterSerializer as DefaultRegisterSerializer
+from rest_framework import serializers
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = '__all__'
+class UserRegisterSerializer(DefaultRegisterSerializer):
+    name = serializers.CharField(max_length=50, write_only=True, required=True)  # 커스텀 필드 추가
 
-    def create(self, validated_data):
-        user = User.objects.create_user(
-            email = validated_data['email'],
-            password = validated_data['password']
-        )
-        return user
+    def custom_signup(self, request, user):
+        # 커스텀 필드 처리
+        name = self.validated_data.pop("name")
+        if name:
+            user.name = name
+            user.save()

@@ -20,11 +20,6 @@ from django.urls import path, include
 
 ## 라이브러리
 from app.views.user import UserViewSet
-from rest_framework_simplejwt.views import TokenRefreshView
-
-## 사용자 
-from app.views.auth import AuthAPIView
-from app.views.register import RegisterAPIView
 from rest_framework import routers
 
 router = routers.DefaultRouter()
@@ -32,9 +27,8 @@ router.register('list', UserViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("register/", RegisterAPIView.as_view()), 
-    path("auth/", AuthAPIView.as_view()),
-    path("auth/refresh/", TokenRefreshView.as_view()),
-    path("", include(router.urls)),
-    path('api/user/', include('allauth.urls'))
+    # path('api/user/', include('allauth.urls')),
+    path('api/user/', include('app.urls')),
+    path('api/user/', include('oauth.urls')),
+    path('api/user/', include(router.urls)),
 ]
